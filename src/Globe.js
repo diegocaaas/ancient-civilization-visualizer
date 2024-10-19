@@ -74,8 +74,13 @@ const Globe = () => {
                 const pointLight = new THREE.PointLight(0xffffff, 2);
                 pointLight.position.set(5, 5, 5);
                 scene.add(pointLight);
+                
+                animate(globe);
 
-                animate(globe); // Start the animation
+                setTimeout(()=>{
+                    document.getElementById("loading-screen").style.display = 'none';
+                }, 1000
+            )
             } catch (error) {
                 console.error("Error loading texture:", error);
             }
@@ -107,12 +112,15 @@ const Globe = () => {
 
     return (
         <div
-            onMouseDown={() => globePressRef.current = true}
+             onMouseDown={() => globePressRef.current = true}
             onMouseUp={() => globePressRef.current = false}
             onMouseMove={onMouseMove}
             onWheel={onMouseScroll}
-            ref={mountRef}
-        />
+            ref={mountRef}>
+            <div id="loading-screen">
+                Loading....
+            </div>
+        </div>
     );
 };
 
