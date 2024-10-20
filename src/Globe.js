@@ -35,11 +35,13 @@ const Globe = () => {
         scene.background = new THREE.Color(0xBEEFBFA);
         const currentmount = mountRef.current;
 
-        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const aspectRatio = (window.innerWidth/2) / window.innerHeight;
+        
+        const camera = new THREE.PerspectiveCamera(50, aspectRatio, 0.1, 1000);
         camera.position.z = 5;
 
         const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(window.innerWidth/2, window.innerHeight);
         currentmount.appendChild(renderer.domElement);
 
         const geometry = new THREE.SphereGeometry(1, 32, 32);
@@ -111,8 +113,9 @@ const Globe = () => {
     }, []);
 
     return (
-        <div
-             onMouseDown={() => globePressRef.current = true}
+        <div 
+            id='GlobePanel'
+            onMouseDown={() => globePressRef.current = true}
             onMouseUp={() => globePressRef.current = false}
             onMouseMove={onMouseMove}
             onWheel={onMouseScroll}
