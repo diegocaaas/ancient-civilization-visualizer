@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { getCivilivationData } from "./services/AIService";
+import { getCivilivations } from "./services/AIService";
 
 const InfoPanel = () => {
 
@@ -16,10 +16,10 @@ const InfoPanel = () => {
     };
     
     const handleOnSubmit = (event) => { 
-        console.log("GETTING");
-        getCivilivationData(yearOfInterest, timeEraRef.current)
+        getCivilivations(yearOfInterest, timeEraRef.current)
         .then((result) => {
             setData(result);
+            console.log(result)
         });
     }
 
