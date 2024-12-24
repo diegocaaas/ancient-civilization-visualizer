@@ -1,10 +1,11 @@
  export class Civilization{
 
-    constructor(name, startYear, endYear, coordinates, description) {
+    constructor(name, startYear, endYear, latitude, longitude, description) {
         this.name = name;
         this.startYear = startYear;
         this.endYear = endYear;
-        this.coordinates = coordinates;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.description = description;
     }
     
@@ -13,7 +14,8 @@
         json.name, 
         json.startYear,
         json.endYear,
-        json.coordinates,
+        json.latitude,
+        json.longitude,
         json.description, 
       );
     }

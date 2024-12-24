@@ -1,11 +1,12 @@
-import React, { useRef, useState } from "react";
-import { getCivilivations } from "./services/AIService";
+import React, { useContext, useRef, useState, useEffect } from "react";
+import { getCivilivations } from "../services/AIService";
+import { CivilizationsContext} from "../App";
 
 const InfoPanel = () => {
 
     const timeEraRef = useRef("BC");
     const [yearOfInterest, setYearOfInterest] = useState(0);
-    const [data, setData] = useState({});
+    const { setCivilizations, pickedCivilization, setPickedCivilization} = useContext(CivilizationsContext);
 
     const handleTimeEraSelection = (event) => {
         timeEraRef.current = event.target.value;
@@ -16,10 +17,10 @@ const InfoPanel = () => {
     };
     
     const handleOnSubmit = (event) => { 
+        setPickedCivilization(null);
         getCivilivations(yearOfInterest, timeEraRef.current)
         .then((result) => {
-            setData(result);
-            console.log(result)
+            setCivilizations([...result]);
         });
     }
 
@@ -32,9 +33,9 @@ const InfoPanel = () => {
             <option value="AD">AD</option>
         </select>
         <button onClick={handleOnSubmit}>Submit</button>
-        <pre>
-            {JSON.stringify(data, null, 2)}
-        </pre>
+        {pickedCivilization && <h1> {pickedCivilization.name}</h1>}
+        {pickedCivilization && <p> {pickedCivilization.description} </p>}
+        <div> {JSON.stringify(pickedCivilization)} </div>
     </div>
 }
 
