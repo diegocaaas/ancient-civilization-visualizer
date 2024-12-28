@@ -1,6 +1,5 @@
 import './App.css';
 import Globe from './components/Globe';
-import InfoDialog from './components/InfoDialog';
 import InfoPanel from './components/InfoPanel';
 import { createContext, useState} from 'react';
 
@@ -9,6 +8,7 @@ export const CivilizationsContext = createContext();
 const CivilizationsProvider = ({ children }) => {
   const [civilizations, setCivilizations] = useState([]);
   const [pickedCivilization, setPickedCivilization] = useState(null);
+  const [isLoading, setLoading] = useState(false);
 
 
   const value = {
@@ -16,6 +16,8 @@ const CivilizationsProvider = ({ children }) => {
     setCivilizations,
     pickedCivilization,
     setPickedCivilization,
+    isLoading,
+    setLoading,
   };
   
   return (
@@ -31,7 +33,6 @@ function App() {
       <CivilizationsProvider>
         <InfoPanel/>
         <Globe/>
-        <InfoDialog/>
       </CivilizationsProvider>
     </div>
   );

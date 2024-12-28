@@ -1,5 +1,5 @@
 .App {
-  background-color: #282c34; 
+  background-color: aqua;
   min-height: 100vh;
   color: white;
   display: flex;
@@ -20,6 +20,20 @@ canvas {
   position: relative;
 }
 
+.column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Horizontally center the children */
+  align-items: center;
+  width: 100%;
+}
+
+.row{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
 #GlobePanel{
   flex: 1;
   position: relative;
@@ -36,3 +50,49 @@ canvas {
   
 }
 
+
+
+
+/* General button styling */
+.submit-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.3s;
+}
+
+
+
+/* Text styling */
+.button-text {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

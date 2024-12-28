@@ -153,8 +153,6 @@ const Globe = () => {
                 if(intersects.length > 0 && civilizations.length > 0){
                     intersects[0].object.material.color.set( 0xffff00 );
                     const chosenCivilization = civilizations[parseInt(intersects[0].object.name)];
-                    console.log(parseInt(intersects[0].object.name))
-                    console.log(civilizations)
                     setPickedCivilization(chosenCivilization);
                 }
                 if(mousePositionRef.current.x !== 0){
@@ -190,7 +188,7 @@ const Globe = () => {
             onWheel={onMouseScroll}
             ref={mountRef}>
             <div id="loading-screen">
-                Loading....
+                <div className="loading-spinner"></div>
             </div>
         </div>
     );
