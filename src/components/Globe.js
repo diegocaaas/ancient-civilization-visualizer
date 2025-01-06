@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { CivilizationsContext } from '../App';
+import { CivilizationsContext } from '../providers/CivilizationsProvider';
 
 
 const Globe = () => {
@@ -44,6 +44,42 @@ const Globe = () => {
             scrollPositionRef.current -= 0.5;
         }
     };
+
+
+    const latLongToVector3 = (lat, lon, radius) => {
+        const phi = (lat) * (Math.PI / 180); 
+        const theta = (lon) * (Math.PI / 180); 
+        
+        const x = radius * Math.cos(phi) * Math.sin(theta);
+        const y =  radius * Math.sin(phi);
+        const z = radius * Math.cos(phi) * Math.cos(theta);
+        
+        return new THREE.Vector3(x, y, z);
+    };
+
+    const disposeMarkers = () =>{
+        while (globeRef.current.children.length > 0) {
+            const child = globeRef.current.children[0];
+        
+            if (child.geometry) {
+                child.geometry.dispose();
+            }
+        
+            if (child.material) {
+                if (Array.isArray(child.material)) {
+                    child.material.forEach((material) => {
+                        if (material.map) material.map.dispose();
+                        material.dispose(); 
+                    });
+                } else {
+                    if (child.material.map) child.material.map.dispose();
+                    child.material.dispose();
+                }
+            }
+        
+            globeRef.current.remove(child);
+        };
+    }
     
     useEffect(() => {
         const renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -85,6 +121,7 @@ const Globe = () => {
             renderer.dispose();
             geometry.dispose();
             material.dispose();
+            disposeMarkers(); 
         };
     }, []);
 
@@ -92,38 +129,7 @@ const Globe = () => {
     useEffect(() => {
         document.getElementById("loading-screen").style.display = 'flex';
         
-        while (globeRef.current.children.length > 0) {
-            const child = globeRef.current.children[0];
-        
-            if (child.geometry) {
-                child.geometry.dispose();
-            }
-        
-            if (child.material) {
-                if (Array.isArray(child.material)) {
-                    child.material.forEach((material) => {
-                        if (material.map) material.map.dispose();
-                        material.dispose(); 
-                    });
-                } else {
-                    if (child.material.map) child.material.map.dispose();
-                    child.material.dispose();
-                }
-            }
-        
-            globeRef.current.remove(child);
-        }
-
-        function latLongToVector3(lat, lon, radius) {
-            const phi = (lat) * (Math.PI / 180); 
-            const theta = (lon) * (Math.PI / 180); 
-            
-            const x = radius * Math.cos(phi) * Math.sin(theta);
-            const y =  radius * Math.sin(phi);
-            const z = radius * Math.cos(phi) * Math.cos(theta);
-            
-            return new THREE.Vector3(x, y, z);
-        }
+        disposeMarkers();
         
         for(let i in civilizations){
             const latitude = civilizations[i].latitude;
@@ -174,7 +180,7 @@ const Globe = () => {
         }, 1000);
         
         return () => {
-            cancelAnimationFrame(animationRef.current); 
+            cancelAnimationFrame(animationRef.current);
         };
     }, [civilizations, setPickedCivilization]);
 

@@ -1,9 +1,9 @@
 .App {
-  background-color: aqua;
+  background-color: #b5651d;
   min-height: 100vh;
   color: white;
   display: flex;
-  
+  overflow: hidden;
 }
 
 canvas {
@@ -12,7 +12,7 @@ canvas {
 
 .InfoPanel{
   flex: 1;
-  background-color: aqua;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,6 +79,16 @@ canvas {
   transition: opacity 0.3s;
 }
 
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .loading-spinner {
   width: 16px;
   height: 16px;
@@ -88,11 +98,49 @@ canvas {
   animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+
+select {
+  width: auto; /* Set desired width */
+  font-size: 16px;
+  color: #333;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.text-button {
+  background: none;           /* No background */
+  color: #007bff;             /* Text color (blue) */
+  cursor: pointer;           /* Change cursor to pointer */
+}
+
+.text-button:hover {
+  color: #0056b3;             /* Change color on hover */
+}
+
+
+
+/* Style the scrollbar itself */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+  height: 12px; /* Height of the horizontal scrollbar */
+}
+
+/* Style the track (the part the thumb moves within) */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Light gray background for the track */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Style the thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Dark gray color for the thumb */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Style the thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darker gray on hover */
 }
