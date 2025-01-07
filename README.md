@@ -1,1 +1,2 @@
 # ancient-civilization-visualizer
+The Ancient Civilizations Explorer App allows users to visualize and learn about ancient civilizations on an interactive globe. Users can enter a specific year, and the app will display civilizations that existed during that time, along with their locations. Clicking on a civilization's location provides detailed information about its culture, history, and notable achievements.
