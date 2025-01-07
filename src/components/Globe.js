@@ -99,7 +99,7 @@ const Globe = () => {
 
         const geometry = new THREE.SphereGeometry(1, 32, 32);
         const material = new THREE.MeshStandardMaterial({
-            map: textureLoader.load('/earth.jpg')
+            map: textureLoader.load(`${process.env.PUBLIC_URL}/earth.jpg`)
         });
 
         const globe = new THREE.Mesh(geometry, material);
