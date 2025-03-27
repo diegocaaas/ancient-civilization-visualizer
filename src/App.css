@@ -2,10 +2,10 @@ html, body{
   overflow: hidden;
 }
 
-
 .App {
   background-color: #b5651d;
-  min-height: 100vh;
+  height: 100%;
+  width: 100%;
   color: white;
   display: flex;
 }
