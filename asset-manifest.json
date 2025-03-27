@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ancient-civilization-visualizer/static/css/main.0e1b3f62.css",
+    "main.css": "/ancient-civilization-visualizer/static/css/main.c349f434.css",
     "main.js": "/ancient-civilization-visualizer/static/js/main.9d1bffd7.js",
     "static/js/453.d71d9a29.chunk.js": "/ancient-civilization-visualizer/static/js/453.d71d9a29.chunk.js",
     "index.html": "/ancient-civilization-visualizer/index.html",
-    "main.0e1b3f62.css.map": "/ancient-civilization-visualizer/static/css/main.0e1b3f62.css.map",
+    "main.c349f434.css.map": "/ancient-civilization-visualizer/static/css/main.c349f434.css.map",
     "main.9d1bffd7.js.map": "/ancient-civilization-visualizer/static/js/main.9d1bffd7.js.map",
     "453.d71d9a29.chunk.js.map": "/ancient-civilization-visualizer/static/js/453.d71d9a29.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0e1b3f62.css",
+    "static/css/main.c349f434.css",
     "static/js/main.9d1bffd7.js"
   ]
 }
