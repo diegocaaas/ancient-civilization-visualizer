@@ -1,16 +1,18 @@
+html, body{
+  overflow: hidden;
+}
+
+
 .App {
   background-color: #b5651d;
   min-height: 100vh;
   color: white;
   display: flex;
-  overflow: hidden;
 }
-
 
 
 .InfoPanel{
   flex: 1;
-  
   display: flex;
   flex-direction: column;
   justify-content: center;
